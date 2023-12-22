@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
             start.setAttribute('disabled', true); 
         }else if ( files != "" && cookies != null && dom != null) {
             start.removeAttribute('disabled'); 
-        } 
+        }
     })
     
     start.addEventListener('click', () => {
@@ -40,7 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
             cookies : cookies.files[0]?.path,
             dom : dom.value,
             visible : visibleToggle.checked ? false : 'new'
-        }       
+        }
+        ipcRenderer.send('main', data)
     })
     
     ipcRenderer.on('run', () => {
