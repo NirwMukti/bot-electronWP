@@ -1,8 +1,8 @@
 {
-  "name": "bot-aticle",
-  "productName": "bot-aticle",
+  "name": "bot-article",
+  "productName": "bot-article",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "An article bot that build with tailwind and electron",
   "main": "src/index.js",
   "scripts": {
     "start": "electron-forge start",
@@ -10,7 +10,7 @@
     "make": "electron-forge make",
     "publish": "electron-forge publish",
     "lint": "echo \"No linting configured\"",
-    "dev":"npx tailwindcss -i ./src/input.css -o ./src/css/style.css --watch"
+    "dev": "npx tailwindcss -i ./src/input.css -o ./src/css/style.css --watch"
   },
   "keywords": [],
   "author": {
@@ -19,11 +19,11 @@
   "license": "MIT",
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
     "puppeteer": "^21.6.1",
     "puppeteer-extra": "^3.3.6",
-    "puppeteer-extra-plugin-stealth": "^2.11.2",
-    "fs": "^0.0.1-security",
-    "path": "^0.12.7"
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
   },
   "devDependencies": {
     "@electron-forge/cli": "^6.4.2",

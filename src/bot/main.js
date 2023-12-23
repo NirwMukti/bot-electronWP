@@ -5,7 +5,8 @@ const {
 const stealthPlugin = require('puppeteer-extra-plugin-stealth')
 puppeteer.use(stealthPlugin())
 const fs = require('fs');
-const path = require('path')
+const path = require('path');
+const { TIMEOUT } = require('dns');
 let stops = false
 
 const mainProccess = async (logToTextArea, proggress, data) => {
@@ -115,7 +116,7 @@ const mainProccess = async (logToTextArea, proggress, data) => {
         await delay(3)
 
         logToTextArea('Search for Random Images in Google Image')
-        await page3.waitForSelector('.rg_i')
+        await page3.waitForSelector('.rg_i', {timeout: 120000})
         const imageSelector = await page3.$$('.rg_i');
         const randomImage = Math.floor(Math.random() * imageSelector.length, {
             delay: 2000
@@ -123,7 +124,7 @@ const mainProccess = async (logToTextArea, proggress, data) => {
         await imageSelector[randomImage].click();
 
         logToTextArea('Copy Random Image URL')
-        await page3.waitForSelector('#Sva75c > div.A8mJGd.NDuZHe.CMiV2d.OGftbe-N7Eqid-H9tDt > div.dFMRD > div.AQyBn > div.tvh9oe.BIB1wf.hVa2Fd > c-wiz > div > div > div > div > div.v6bUne > div.p7sI2.PUxBg > a > img.sFlh5c.pT0Scc.iPVvYb')
+        await page3.waitForSelector('#Sva75c > div.A8mJGd.NDuZHe.CMiV2d.OGftbe-N7Eqid-H9tDt > div.dFMRD > div.AQyBn > div.tvh9oe.BIB1wf.hVa2Fd > c-wiz > div > div > div > div > div.v6bUne > div.p7sI2.PUxBg > a > img.sFlh5c.pT0Scc.iPVvYb', {timeout: 75000})
         const imageURL = await page3.evaluate(() => {
             const imageElement = document.querySelector("#Sva75c > div.A8mJGd.NDuZHe.CMiV2d.OGftbe-N7Eqid-H9tDt > div.dFMRD > div.AQyBn > div.tvh9oe.BIB1wf.hVa2Fd > c-wiz > div > div > div > div > div.v6bUne > div.p7sI2.PUxBg > a > img.sFlh5c.pT0Scc.iPVvYb")
             return imageElement.src
