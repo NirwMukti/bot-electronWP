@@ -6,7 +6,6 @@ const stealthPlugin = require('puppeteer-extra-plugin-stealth')
 puppeteer.use(stealthPlugin())
 const fs = require('fs');
 const path = require('path');
-const { TIMEOUT } = require('dns');
 let stops = false
 
 const mainProccess = async (logToTextArea, proggress, data) => {
@@ -125,7 +124,7 @@ const mainProccess = async (logToTextArea, proggress, data) => {
 
         logToTextArea('Copy Random Image URL')
         await delay(5)
-        
+
         const imageURL = await page3.evaluate(() => {
             const imageElement = document.querySelector("#Sva75c > div.A8mJGd.NDuZHe.CMiV2d.OGftbe-N7Eqid-H9tDt > div.dFMRD > div.AQyBn > div.tvh9oe.BIB1wf.hVa2Fd > c-wiz > div > div > div > div > div.v6bUne > div.p7sI2.PUxBg > a > img.sFlh5c.pT0Scc.iPVvYb")
             return imageElement.src
