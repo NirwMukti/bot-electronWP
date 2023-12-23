@@ -36,15 +36,13 @@ document.addEventListener('DOMContentLoaded', function () {
     
     start.addEventListener('click', () => {
         const data = {
-            files: files.files[0]?.path,
-            cookies: cookies.files[0]?.path,
-            dom: dom.value,
-            visible :  visibleToggle.checked ? false : 'new'
-        };
-
-        ipcRenderer.send('main', data);
-    });
-    
+            files : files.files[0]?.path,
+            cookies : cookies.files[0]?.path,
+            dom : dom.value,
+            visible : visibleToggle.checked ? false : 'new'
+        }
+        ipcRenderer.send('main', data)
+    })
     
     ipcRenderer.on('run', () => {
         start.classList.add('hidden')
